@@ -1,19 +1,20 @@
-class User {
-  constructor(name) {
-    this.name = name;
-  }
-  regular() {
-    console.log("Regular: ", this.name);
-  }
-  arrow = () => {
-    console.log("Arrow: ,",this.name);
-  };
+//constructor function
+
+function Person(name) {
+  this.name = name;
 }
 
-const u = new User("Harleen");
-const reg = u.regular;
-const arr = u.arrow;
+Person.prototype.greeting = function () {
+  console.log("Hi this is " + this.name);
+};
 
+const alice = new Person("Alice");
+const bobby = Person("Bobby");
 
-arr(); //does not get detached as it focuses on origin place not how called 
-reg(); //detached
+alice.greeting();
+//this is the window object here now without new key
+
+//BTH
+//const alice ={},
+//_proto_ = Person.prototype
+//Person.call(alice,"Alice")
