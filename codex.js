@@ -7,15 +7,20 @@
 //increases efficiency
 //uses try n catch
 
-async function test() {
-  const val = await Promise.resolve("This is a resolved promise");
-
-  return val;
+function fetchWithError() {
+  return new Promise((_, reject) => {
+    setTimeout(() => reject("Fetch failed"), 1000);
+  });
 }
 
-console.log(test()); //returns the promise object
-console.log(
-  test().then((val) => {
-    console.log(val);
-  })
-);
+async function getData() {
+  try {
+    const result = await fetchWithError();
+    console.log("Results are ", result);
+  } catch (error) {
+    console.log("Error is ", error);
+  }
+}
+getData()// executes the function 
+const res = getData(); //returns promise object in the res 
+console.log(res);
