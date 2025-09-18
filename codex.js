@@ -1,29 +1,34 @@
-//Async an await allows us to write async funs in cleaner way
-//await cammot be used without async
-//async always returns a promise
-//if a static value returns it wrapped in a resolved promise
-//await too same
-//fire functions returning promised together and then await their results
-//increases efficiency
-//uses try n catch
+const nums = [1, 2, 3, 4, 5];
 
-function fetchWithError() {
-  return new Promise((resolve, _) => {
-    setTimeout(() => resolve("This is resolved data from promise"), 1000);
-  });
-}
+const double = nums.map((num) => num * 2);
+console.log(double);
 
-async function getData() {
-  try {
-    const result_1 = fetchWithError();
-    const result_2 = fetchWithError();
+const mulsthree = double.filter((num) => num % 3 == 0);
+console.log(mulsthree);
 
-    const result1 = await result_1;
-    const result2 = await result_2;
-    console.log("Result_1 ", result1);
-    console.log("Result_2 ", result2);
-  } catch (error) {
-    console.log("Error is ", error);
-  }
-}
-getData(); // executes the function
+const sum = double.reduce((accu, val) => val + accu, 0);
+//val+accu gets stored in accumulator
+console.log("Sum of double " + sum);
+
+//flattening a 2d array
+
+const nestedArrays = [[1], [3, 4], [5]];
+console.log(nestedArrays);
+
+const flatarr = nestedArrays.reduce((accu,arr) => {
+  console.log(arr);
+  return accu.concat(arr) //concat returns a new array 
+  
+},[]);
+console.log(flatarr)
+
+const users = [
+{ id: 1, name: 'Alice' },
+{ id: 2, name: 'Bob' },
+];
+
+//converting an object to array by extracting property
+const usernames = users.map(user=>user.name)
+console.log(usernames)
+
+
