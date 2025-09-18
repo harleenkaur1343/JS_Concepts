@@ -8,19 +8,22 @@
 //uses try n catch
 
 function fetchWithError() {
-  return new Promise((_, reject) => {
-    setTimeout(() => reject("Fetch failed"), 1000);
+  return new Promise((resolve, _) => {
+    setTimeout(() => resolve("This is resolved data from promise"), 1000);
   });
 }
 
 async function getData() {
   try {
-    const result = await fetchWithError();
-    console.log("Results are ", result);
+    const result_1 = fetchWithError();
+    const result_2 = fetchWithError();
+
+    const result1 = await result_1;
+    const result2 = await result_2;
+    console.log("Result_1 ", result1);
+    console.log("Result_2 ", result2);
   } catch (error) {
     console.log("Error is ", error);
   }
 }
-getData()// executes the function 
-const res = getData(); //returns promise object in the res 
-console.log(res);
+getData(); // executes the function
