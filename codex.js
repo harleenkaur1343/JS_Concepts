@@ -1,20 +1,21 @@
-//constructor function
+//Async an await allows us to write async funs in cleaner way
+//await cammot be used without async
+//async always returns a promise
+//if a static value returns it wrapped in a resolved promise
+//await too same
+//fire functions returning promised together and then await their results
+//increases efficiency
+//uses try n catch
 
-function Person(name) {
-  this.name = name;
+async function test() {
+  const val = await Promise.resolve("This is a resolved promise");
+
+  return val;
 }
 
-Person.prototype.greeting = function () {
-  console.log("Hi this is " + this.name);
-};
-
-const alice = new Person("Alice");
-const bobby = Person("Bobby");
-
-alice.greeting();
-//this is the window object here now without new key
-
-//BTH
-//const alice ={},
-//_proto_ = Person.prototype
-//Person.call(alice,"Alice")
+console.log(test()); //returns the promise object
+console.log(
+  test().then((val) => {
+    console.log(val);
+  })
+);
