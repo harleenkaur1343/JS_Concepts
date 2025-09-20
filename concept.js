@@ -1,26 +1,12 @@
-//promises in js
+const users = [
+  { id: 1, name: "Alice", age: 25 },
+  { id: 2, name: "Bob", age: 30 }
+];
 
-const result = 1;
-let num = Math.floor(Math.random() * 6) - 1;
-console.log(num);
+//const usernames = users.map(({age, ...rest})=>rest); //without mutation
+//with mutation 
+users.forEach(el=> {
+    delete el.age;
+});
 
-const newPromise = new Promise((resolve, reject) => {
-  if (num > 1) {
-    resolve(num);
-    console.log("Number ", num);
-  } else {
-    reject("Not true");
-  }
-})
-  .then((value) => {
-    console.log(value * 2);
-    return value * 2;
-  })
-  .then((data) => {
-    console.log("From previous this", data);
-  })
-  .catch((error) => {
-    console.log("Error caught ", error);
-  });
-
-//one catch can handle errors from all this
+console.log(users)
